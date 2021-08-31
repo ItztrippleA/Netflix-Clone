@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./navbar.scss";
-import Nlogo from "../images/Nlogo.png";
 import ado from "../images/Ado.jpg";
 import SearchIcon from "@material-ui/icons/Search";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -18,7 +17,10 @@ const Navbar = () => {
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          <img src={Nlogo} alt="" />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+            alt=""
+          />
           <span>Homepage</span>
           <span>Series</span>
           <span>Movies</span>
