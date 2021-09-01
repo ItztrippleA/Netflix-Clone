@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./navbar.scss";
-import ado from "../images/Ado.jpg";
+import ado from "../../images/Ado.jpg";
 import SearchIcon from "@material-ui/icons/Search";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
