@@ -1,9 +1,11 @@
 import "./app.scss";
-import Home from "./Home/Home";
-import Watch from "./pages/Watch/Watch";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import Watch from "./pages/watch/Watch";
 
 function App() {
-  return <Watch />;
+  return <Login />;
 }
 
 export default App;
