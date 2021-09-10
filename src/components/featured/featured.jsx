@@ -1,8 +1,30 @@
 import "./featured.scss";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-const featured = ({ type }) => {
+const Featured = ({ type }) => {
+  const [content, setcontent] = useState({});
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        const res = await axios.get(`/movies/random?type=${type}`, {
+          headers: {
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzIzMWFmYTY0MDgzNTNjZmNmZmJhZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDcyNzE4NSwiZXhwIjoxNjMxMTU5MTg1fQ.1976pCJGVadwS_BeOEn1V-r0FLXmNib4eS6Ploc6hKU",
+          },
+        });
+        setcontent(res.data[0]);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomContent();
+  }, [type]);
+
   return (
     <div className="featured">
       {type && (
@@ -26,21 +48,10 @@ const featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img
-        src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-      />
+      <img src={content.img} alt="" />
       <div className="info">
-        <img
-          src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
-          alt=""
-        />
-        <span className="desc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores
-          aperiam aliquid id eum, voluptatibus rem quos deserunt ex magnam
-          accusantium omnis, assumenda sed alias dolores vel facilis.
-          Consequatur, eum neque!
-        </span>
+        <img src={content.imgTitle} alt="" />
+        <span className="desc">{content.desc}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrowIcon />
@@ -56,4 +67,4 @@ const featured = ({ type }) => {
   );
 };
 
-export default featured;
+export default Featured;
